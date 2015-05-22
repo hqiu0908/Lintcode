@@ -35,28 +35,29 @@ public class Solution {
      
     public List<Integer> numbersByRecursion(int n) {
         // write your code here
-    	if (n <= 0) {
-    		return results;
-    	}
-    	
-    	if (n == 1) {
-    		for (int i = 1; i < 10; i++) {
-				results.add(i);
-			}	
-    		return results;
-    	}
-    	
-    	results = numbersByRecursion(n - 1);
-    	int size = results.size();	
-    	
-    	int start = (int) (Math.pow(10, n-2) - 1);
-    	for (int i = start; i < size; i++) {
-    		for (int j = 0; j < 10; j++) {
-    			int num = results.get(i) * 10 + j;
-    			results.add(num);
-    		}
-    	}
-    	
-    	return results;
+        if (n <= 0) {
+            return results;
+        }
+    
+        if (n == 1) {
+            for (int i = 1; i < 10; i++) {
+               results.add(i);
+            }
+            return results;
+        }
+    
+        results = numbersByRecursion(n - 1);
+        int size = results.size();
+    
+        int start = (int) (Math.pow(10, n-2) - 1);
+        for (int i = start; i < size; i++) {
+            for (int j = 0; j < 10; j++) {
+                int num = results.get(i) * 10 + j;
+                results.add(num);
+            }
+        }
+    
+        return results;
     }
 }
+
