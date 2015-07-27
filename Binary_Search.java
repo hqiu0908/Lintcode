@@ -30,13 +30,16 @@ class Solution {
         int start = 0;
         int end = nums.length - 1;
         
+        // If we use start <= end, it may get to an infinite loop. Since mid
+        // could be equal to start and we will always get start equals to end
         while (start + 1 < end) {
             int mid = start + (end - start) / 2;
             
             if (nums[mid] == target) {
                 // Keep finding the first occurrence.
                 end = mid;
-                // If finding the last occurrance, start = mid
+                // If finding the last occurrance, start = mid.
+                // If we only have 1 occurrance, we can return mid here.
             } else if (nums[mid] < target) {
                 start = mid;
             } else {
@@ -44,6 +47,7 @@ class Solution {
             }
         }
         
+        // When we break out the while loop, we haven't checked the two ends.
         if (nums[start] == target) {
             return start;
         }
